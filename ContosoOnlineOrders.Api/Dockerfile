@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["ContosoOnlineOrders.Api/ContosoOnlineOrders.Api.csproj", "ContosoOnlineOrders.Api/"]
-COPY ["ContosoOnlineOrders.Abstractions/ContosoOnlineOrders.Abstractions.csproj", "ContosoOnlineOrders.Abstractions/"]
+COPY ["ContosoOnlineOrders.Api.csproj", "ContosoOnlineOrders.Api/"]
+#COPY ["ContosoOnlineOrders.Abstractions/ContosoOnlineOrders.Abstractions.csproj", "ContosoOnlineOrders.Abstractions/"]
 RUN dotnet restore "ContosoOnlineOrders.Api/ContosoOnlineOrders.Api.csproj"
 COPY . .
 WORKDIR "/src/ContosoOnlineOrders.Api"
