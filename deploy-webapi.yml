@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: contosoapi
-          image: acrdemprepo.azurecr.io/fshomou/ContosoOnlineOrdersApi:v#{Build.BuildId}#
+          image: acrdemprepo.azurecr.io/fshomou/contosoanlineardersapi:v#{Build.BuildId}#
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
