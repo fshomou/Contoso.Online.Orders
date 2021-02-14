@@ -52,18 +52,27 @@ namespace ContosoOnlineOrders.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
+                app.UseSwagger(c =>
+                {
+                    c.RouteTemplate = "/swagger/{documentName}/swagger.json";
+                });
+
                 app.UseSwaggerUI(c =>
                 {
                     c.DisplayOperationId();
+
                     //c.SwaggerEndpoint($"/swagger/{CurrentVersion}/swagger.json", $"Contoso Online Orders {CurrentVersion}");
                     foreach (var description in provider.ApiVersionDescriptions)
                     {
                         c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"Contoso Online Orders {description.GroupName}");
+                        c.RoutePrefix = string.Empty;
                     }
                 });
             }
 
+           
+
+           
             app.UseRouting();
 
             app.UseAuthorization();
