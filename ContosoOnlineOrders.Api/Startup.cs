@@ -49,8 +49,7 @@ namespace ContosoOnlineOrders.Api
             IWebHostEnvironment env,
             IApiVersionDescriptionProvider provider)
         {
-            if (env.IsDevelopment())
-            {
+            
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger(c =>
                 {
@@ -68,7 +67,7 @@ namespace ContosoOnlineOrders.Api
                         c.RoutePrefix = string.Empty;
                     }
                 });
-            }
+            
 
            
 
