@@ -64,7 +64,7 @@ namespace ContosoOnlineOrders.Api
                     foreach (var description in provider.ApiVersionDescriptions)
                     {
                         c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"Contoso Online Orders {description.GroupName}");
-                        c.RoutePrefix = string.Empty;
+                        c.RoutePrefix = "swagger";
                     }
                 });
             
