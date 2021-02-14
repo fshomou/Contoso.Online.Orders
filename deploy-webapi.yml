@@ -1,23 +1,23 @@
 ﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ContosoOnlineOrders.Api
+  name: ContosoOnlineOrdersApi
   labels:
     app: ContosoOnlineOrders
 spec:
   replicas: 2
   selector:
     matchLabels:
-      service: ContosoOnlineOrders.Api
+      service: ContosoOnlineOrdersApi
   template:
     metadata:
       labels:
-        app: weather-forecast
+        app: ContosoOnlineOrders
         service: ContosoOnlineOrders.Api
     spec:
       containers:
-        - name: ContosoOnlineOrders.Api
-          image: acrdemprepo.azurecr.io/fshomou/ContosoOnlineOrders.Api:v#{Build.BuildId}#
+        - name: ContosoOnlineOrdersApi
+          image: acrdemprepo.azurecr.io/fshomou/ContosoOnlineOrdersApi:v#{Build.BuildId}#
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -29,10 +29,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ContosoOnlineOrders.Api
+  name: ContosoOnlineOrdersApi
   labels:
-    app: weather-forecast
-    service: ContosoOnlineOrders.Api
+    app: ContosoOnlineOrders
+    service: ContosoOnlineOrdersApi
 spec:
   type: LoadBalancer
   ports:
@@ -41,4 +41,4 @@ spec:
       protocol: TCP
       name: http 
   selector:
-    service: ContosoOnlineOrders.Api
+    service: ContosoOnlineOrdersApi
